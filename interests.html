@@ -1,0 +1,125 @@
+<!-DOCTYPE html>
+<html lang="en">
+<head>
+<title>NW Consulting Services</title>
+<link rel="stylesheet" type = "text/css" href="interests.css">
+</head>
+<body>
+	<header>
+		<div class="main">
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="startbootstrap-resume-gh-pages/index.html">CV</a></li>
+				<li><a href="interests.html">Interests</a></li>
+				<li><a href="aboutus.html">About Us</a></li>
+				<li><a href="ebus.html">Services</a></li>
+			</ul>
+		</div>
+		
+		<head>
+<!-- Image scroller css -->
+<style type="text/css">
+#scroller {
+position: relative;
+}
+#scroller .innerScrollArea {
+overflow: hidden;
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+}
+#scroller ul {
+padding: 30px;
+margin: 0;
+position: relative;
+}
+#scroller li {
+padding: 30px;
+margin: 0;
+list-style-type: none;
+position: absolute;
+}
+</style>
+<meta charset="UTF-8">
+<title>Image Scroller</title>
+</head>
+<body>
+	<br><br><br><div id="scroller" style="width: 550px; height: 400px; margin: 0 auto;">
+		<div class="innerScrollArea">
+			<ul>
+				<!-- Define photos  -->
+				<li><img src="livigno.jpg" width="600" height="300" /></li>
+				<li><img src="rob.jpg" width="600" height="300" /></li>
+				<li><img src="music.jpg" width="600" height="300" /></li>
+				<li><img src="snowboarding.jpg" width="600" height="300" /></li>
+
+			</ul>
+		</div>
+	</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+var scroller = $('#scroller div.innerScrollArea');
+var scrollerContent = scroller.children('ul');
+scrollerContent.children().clone().appendTo(scrollerContent);
+var curX = 0;
+scrollerContent.children().each(function(){
+var $this = $(this);
+$this.css('left', curX);
+curX += $this.outerWidth(true);
+});
+var fullW = curX / 2;
+var viewportW = scroller.width();
+
+// Scrolling speed management
+var controller = {curSpeed:0, fullSpeed:2};
+var $controller = $(controller);
+var tweenToNewSpeed = function(newSpeed, duration)
+{
+if (duration === undefined)
+duration = 600;
+$controller.stop(true).animate({curSpeed:newSpeed}, duration);
+};
+
+// Pause on hover
+scroller.hover(function(){
+tweenToNewSpeed(0);
+}, function(){
+tweenToNewSpeed(controller.fullSpeed);
+});
+
+// Scrolling management; start the automatical scrolling
+var doScroll = function()
+{
+var curX = scroller.scrollLeft();
+var newX = curX + controller.curSpeed;
+if (newX > fullW*2 - viewportW)
+newX -= fullW;
+scroller.scrollLeft(newX);
+};
+setInterval(doScroll, 20);
+tweenToNewSpeed(controller.fullSpeed);
+});
+</script>
+	
+		
+		<!-- Interests -->
+		<div>
+			<br><br><h1 style="color: #00CED1;">My Interests<h1>
+			<h2 style="color: #696969;">Sports<h2>
+			<p style="color: white;">I have a huge interest in sports, in particular I'm interested in the area of gym & bodybuilding. I started going to the gym about 2 years ago and I haven't looked back since. Going to the gym gives me a boost of self-esteem. Seeing my progress is what keeps me motivated, and there's no better feeling after having a good gym session. I go to the gym 6 times a week and follow a "push/pull/legs" split. This means I train chest, shoulders and triceps on my "push" day, back and biceps on my "pull" day and legs on "leg" day. I am hoping to compete in a bodybuilding show next summer in Houston, Texas. Some people that inspired me when I started my fitness journey include, Rob Lipsett (Irish influencer/YouTuber), and Christian Guzman (Owner of Alphalete Athletics).</p>
+		</div>
+		
+		<div>
+			<br><h2 style="color: #696969;">Travel<h2>
+			<p style="color: white;"> Travelling has been a big part of my life. I have travelled to over 32 countries including some amazing places such as Africa, Thailand, Amsterdam, Livigno, Iceland and Canada. I go skiing every year in the Italian Alps in a magical place called Livigno. We usaully go skiing in the month of February as the skiing conditions are the best then! Me and my family also go on holidays during the summer. We try to visit a different country each year and not go to the cliche places such as Spain, France etc. Last summer we went to Thailand and it was one of the most amazing places I have ever been to. I was amazed by the culture and food over there. I think that's one of the best things about travelling, getting to know a variety of cultures and getting to know the people and see how they live. One place that I haven't been to and really would like to visit is America. Hopefully next summer I can visit that wonderful country and tick it off my bucket list.</p>
+		</div>
+	</header>
+	
+	
+</div>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!-DOCTYPE html>
+<html lang="en">
+<head>
+<title>NW Consulting Services</title>
+<link rel="stylesheet" type = "text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<div class="main">
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="startbootstrap-resume-gh-pages/index.html">CV</a></li>
+				<li><a href="interests.html">Interests</a></li>
+				<li><a href="aboutus.html">About Us</a></li>
+				<li><a href="ebus.html">Services</a></li>
+			</ul>
+		</div>
+	</header>
+
+<body align="center">
+<!-- Heading -->
+<br><br><br><br><h2 style="color: #00CED1;">Select Product</h2>
+
+<br />
+
+
+
+<!-- Hyperautomation radio button -->
+<label for="Hyperautomation">
+<input type="radio" id="Hyperautomation" name="product" checked onClick="disablebtnProceed()"/>
+Hyperautomation @ $200
+</label>
+
+<br />
+<br />
+<br />
+
+<!-- Multiexperience radio button --> 
+<label for="Multiexperience">
+<input type="radio" id="Multiexperience" name="product" checked onClick="disablebtnProceed()"/>
+Multiexperience @ $500
+</label>
+
+<br />
+<br />
+<br />
+
+<!-- Distributed Cloud radio button --> 
+<label for="Distributed Cloud">
+<input type="radio" id="Distributed Cloud" name="product" checked onClick="disablebtnProceed()"/>
+Distributed Cloud @ $100
+</label>
+
+<br />
+<br />
+<br />
+
+
+<!-- Subtotal textbox --> 
+<label for="Subtotal">
+Sub Total
+<input type="text" id="Subtotal" name="Subtotal" value="0.00" readonly>
+</label>
+
+<br />
+<br />
+<br /> 
+
+<!-- Discount textbox --> 
+<label for="Discount">
+Discount @ 5% 
+(- discount)
+<input type="text" id="Discount" name="Discount" value="0.00" readonly>
+</label>
+
+<br /> 
+<br />
+<br />
+
+<!-- Vat textbox --> 
+<label for="Vat">
+Vat @ 20%
+<input type="text" id="Vat" name="Vat" value="0.00" readonly>
+</label>
+
+<br />
+<br />
+<br />
+
+<!-- Total textbox --> 
+<label for="Total">
+Total (- discount + vat)
+<input type="text" id="Total" name="Total" value="0.00" readonly>
+</label>
+
+<br />
+<br />
+<br />
+
+
+
+<!-- Button to calculate cost and clear selections -->
+<button style="font-size:15px; background-color: #00CED1; color: #696969;" onClick="calcSub()">Calculate cost</button>
+
+<button style="font-size:15px; background-color: #00CED1; color: #696969;">Clear Choice</button></a>
+
+<br />
+<br />
+
+
+
+<!-- Footer -->
+<div id = "Footer">
+<p>Copyright 2020 &COPY; All Rights Reserved. Design by Nikodem Wyczynski.</p>
+</div>
+
+
+</body>
+
+
+<script>
+//Creating if statement 
+function calcSub(){
+
+//Declaring variabes
+var argsubtotal;
+
+//if statement 
+if(document.getElementById("Hyperautomation").checked) {
+argsubtotal = 100; // subtotal if hyperautomation is checked
+} 
+else if(document.getElementById("Multiexperience").checked) {
+argsubtotal = 500; // subtotal if multiexperience is checked
+} 
+else if(document.getElementById("Distributed Cloud").checked) {
+argsubtotal = 1000; // subtotal if distributed cloud is checked
+} 
+
+
+CalcVatTotal(argsubtotal);
+}
+
+//Function to calculate discount, vat and total
+function CalcVatTotal(parmSubTotal){
+
+// Declaring variables
+var Subtotal = parmSubTotal;
+var vatAmt;
+var discountAmt;
+var TotalPrice;
+
+// Calculate discount value
+discountAmt = (parmSubTotal * .05);
+
+// Calculate vat value
+vatAmt = (parmSubTotal * .1);
+
+// Calculate total
+TotalPrice = (parmSubTotal + vatAmt - discountAmt);
+
+// Pass all values
+display(Subtotal , vatAmt , discountAmt , TotalPrice);
+}
+
+// Function to display all the value passed through
+function display(parm1 , parm2 , parm3 , parm4){
+
+// Display subtotal
+document.getElementById("Subtotal").value = parm1; 
+
+// Display vat
+document.getElementById("Vat").value = parm2;
+
+// Display discount 
+document.getElementById("Discount").value = parm3; 
+
+// Display total
+document.getElementById("Total").value = parm4;
+
+enablebtnProceed();
+}
+
+// Function that enables proceed button
+function enablebtnProceed(){
+$('#btnProceed').prop('disabled', false);
+}
+
+// Function that disables proceed button
+function disablebtnProceed(){
+$('#btnProceed').prop('disabled', true);
+}
+</script>
+
+</html>
